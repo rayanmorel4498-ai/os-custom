@@ -25,3 +25,72 @@ It serves as a **single root of trust** for all secured interactions in the OS.
 ## 🧱 High-Level Architecture
 
 +-------------+ | TLS Client  | +-------------+ | v +----------------------+ | Primary Loop         | | (Kernel / Server)    | +----------------------+ | v +----------------------+ | TLS Server           | | - Token validation   | | - Crypto operations  | | - Session control    | +----------------------+
+
+All communications must pass through validated channels and active sessions.
+
+---
+
+## 🔑 Configuration & Cryptographic Material
+
+The TLS subsystem relies on:
+
+- `master_key` – root cryptographic secret
+- `boot_token` – secure boot authentication token
+- TLS certificate (PEM)
+- TLS private key (PEM)
+
+Configuration is loaded from YAML and PEM files at startup.  
+The system **refuses to start** if the `master_key` is missing.
+
+The `master_key` is used to derive:
+- encryption keys
+- token signatures
+- session secrets
+- loop-level trust context
+
+---
+
+## 🧠 Sessions, Tokens & Trust Model
+
+Each system component operates under a **secure session** managed by the `SessionManager`.
+
+Each session includes:
+- a signed token
+- a component identity
+- a TTL and expiration
+- continuous health monitoring
+
+Tokens are:
+- encrypted
+- validated on every message
+- rejected if malformed or expired
+
+A `HeartbeatMonitor` continuously evaluates session health and integrity.
+
+---
+
+## 🔁 Loop-Based Runtime Architecture
+
+The TLS system is deeply integrated into a **multi-loop execution model**, not a traditional threaded design.
+
+### Available Loops
+
+| Loop Name | Responsibility |
+|---------|----------------|
+| PrimaryLoop | Kernel, hardware, TLS server |
+| SecondaryLoop | OS services, AI |
+| ThirdLoop | I/O and UI |
+| ForthLoop | Power management |
+| ExternalLoop | Network, messaging, calling |
+
+Each loop:
+- runs in a secured context
+- owns its own message queues
+- validates tokens before processing
+- synchronizes sandbox state
+
+---
+
+## 🔄 Secure Communication Pipelines
+
+### Internal message flow
