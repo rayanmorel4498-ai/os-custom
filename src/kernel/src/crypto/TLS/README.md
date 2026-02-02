@@ -23,7 +23,6 @@ It serves as a **single root of trust** for all secured interactions in the OS.
 ---
 
 ## 🧱 High-Level Architecture
-
 +-------------+
 | TLS Client  |
 +-------------+
@@ -41,6 +40,7 @@ It serves as a **single root of trust** for all secured interactions in the OS.
 | - Crypto operations  |
 | - Session control    |
 +----------------------+
+##
 
 All communications must pass through validated channels and active sessions.
 
