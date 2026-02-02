@@ -96,3 +96,5 @@ Each loop:
 ### Internal message flow
 
 Component ↓ PrimaryChannel ↓ PrimaryLoop ↓ TLS Server ↓ Token validation + decryption ↓ Secure dispatch
+
+### External communication flow
