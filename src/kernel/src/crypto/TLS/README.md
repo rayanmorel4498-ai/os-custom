@@ -24,7 +24,23 @@ It serves as a **single root of trust** for all secured interactions in the OS.
 
 ## 🧱 High-Level Architecture
 
-+-------------+ | TLS Client  | +-------------+ | v +----------------------+ | Primary Loop         | | (Kernel / Server)    | +----------------------+ | v +----------------------+ | TLS Server           | | - Token validation   | | - Crypto operations  | | - Session control    | +----------------------+
++-------------+
+| TLS Client  |
++-------------+
+       |
+       v
++----------------------+
+| Primary Loop         |
+| (Kernel / Server)    |
++----------------------+
+       |
+       v
++----------------------+
+| TLS Server           |
+| - Token validation   |
+| - Crypto operations  |
+| - Session control    |
++----------------------+
 
 All communications must pass through validated channels and active sessions.
 
