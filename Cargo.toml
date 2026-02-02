@@ -1,0 +1,127 @@
+[package]
+name = "redmi_hardware"
+version = "1.0.0"
+edition = "2021"
+description = "Hardware abstraction layer for Redmi OS - bare metal no_std"
+
+[lib]
+name = "redmi_hardware"
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+volatile = "0.5"
+atomic = "0.1"
+cortex-m = { version = "0.7", optional = true }
+cortex-m-rt = { version = "0.7", optional = true }
+rtic = { version = "2.0", optional = true }
+p256 = { version = "0.13", default-features = false, features = ["alloc", "ecdsa"] }
+signature = { version = "2.2", default-features = false }
+spin = { version = "0.7", default-features = false }
+
+[features]
+default = ["cortex-m"]
+sensors = []
+camera = []
+display = []
+battery = []
+thermal = []
+biometric = []
+full = ["sensors", "camera", "display", "battery", "thermal", "biometric"]
+rtic-support = ["rtic"]
+embedded-secure-yaml = []
+
+[dev-dependencies]
+lazy_static = "1.4"
+libc = "0.2"
+
+[[test]]
+name = "hardware_manager_integration_tests"
+path = "tests/hardware_manager_integration_tests.rs"
+
+
+[[test]]
+name = "audio_tests"
+path = "tests/audio_tests.rs"
+
+[[test]]
+name = "biometric_tests"
+path = "tests/biometric_tests.rs"
+
+[[test]]
+name = "camera_tests"
+path = "tests/camera_tests.rs"
+
+[[test]]
+name = "cpu_tests"
+path = "tests/cpu_tests.rs"
+
+[[test]]
+name = "device_interfaces_tests"
+path = "tests/device_interfaces_tests.rs"
+
+[[test]]
+name = "display_tests"
+path = "tests/display_tests.rs"
+
+[[test]]
+name = "gps_tests"
+path = "tests/gps_tests.rs"
+
+[[test]]
+name = "gpu_tests"
+path = "tests/gpu_tests.rs"
+
+[[test]]
+name = "haptics_tests"
+path = "tests/haptics_tests.rs"
+
+[[test]]
+name = "misc_tests"
+path = "tests/misc_tests.rs"
+
+[[test]]
+name = "modem_tests"
+path = "tests/modem_tests.rs"
+
+[[test]]
+name = "nfc_tests"
+path = "tests/nfc_tests.rs"
+
+[[test]]
+name = "power_tests"
+path = "tests/power_tests.rs"
+
+[[test]]
+name = "ram_tests"
+path = "tests/ram_tests.rs"
+
+[[test]]
+name = "security_tests"
+path = "tests/security_tests.rs"
+
+[[test]]
+name = "sensors_tests"
+path = "tests/sensors_tests.rs"
+
+[[test]]
+name = "storage_tests"
+path = "tests/storage_tests.rs"
+
+[[test]]
+name = "thermal_tests"
+path = "tests/thermal_tests.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+opt-level = 1
+debug = true
+
+[profile.test]
+opt-level = 1
+debug = true
