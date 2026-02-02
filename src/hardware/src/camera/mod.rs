@@ -1,0 +1,14 @@
+pub mod front_camera;
+pub mod rear_camera;
+pub mod depth_sensor;
+pub mod flash;
+pub mod zoom;
+pub mod stabilization;
+pub mod camera_control;
+pub use front_camera::FrontCamera;
+pub use rear_camera::RearCamera;
+pub use depth_sensor::DepthSensor;
+pub use flash::FlashModule;
+pub use zoom::ZoomModule;
+pub use stabilization::StabilizationModule;
+pub use camera_control::CameraController;
