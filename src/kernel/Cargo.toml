@@ -1,0 +1,50 @@
+[package]
+name = "redmi-kernel"
+version = "1.0.0"
+edition = "2021"
+description = "Kernel core - device drivers, security, crypto, permissions"
+build = "build.rs"
+
+[lib]
+name = "redmi_kernel"
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"], default-features = false }
+serde_yaml = { version = "0.9", default-features = false }
+ring = { version = "0.17", default-features = false }
+sha2 = { version = "0.10", default-features = false }
+hex = { version = "0.4", default-features = false }
+zeroize = { version = "1.6", features = ["derive"], default-features = false }
+parking_lot = { version = "0.12", default-features = false }
+crossbeam = { version = "0.8", default-features = false }
+rayon = { version = "1.7", default-features = false }
+once_cell = { version = "1.19", default-features = false, features = ["critical-section"] }
+anyhow = { version = "1.0", default-features = false }
+thiserror = { version = "1.0", default-features = false }
+argon2 = { version = "0.5", default-features = false }
+blake3 = { version = "1.5", default-features = false }
+aes-gcm = { version = "0.10", default-features = false }
+rand = { version = "0.8", default-features = false }
+rand_core = { version = "0.6", default-features = false }
+hashbrown = { version = "0.14", default-features = false }
+redmi_hardware = { path = "../hardware" }
+redmi_tls = { package = "redmi-tls", path = "src/crypto/TLS" }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[features]
+default = []
+crypto = []
+device_drivers = []
+permissions = []
+security = []
+tls = []
+full = ["crypto", "device_drivers", "permissions", "security", "tls"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
