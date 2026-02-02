@@ -94,3 +94,5 @@ Each loop:
 ## 🔄 Secure Communication Pipelines
 
 ### Internal message flow
+
+Component ↓ PrimaryChannel ↓ PrimaryLoop ↓ TLS Server ↓ Token validation + decryption ↓ Secure dispatch
