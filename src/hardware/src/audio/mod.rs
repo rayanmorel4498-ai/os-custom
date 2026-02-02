@@ -1,0 +1,9 @@
+pub mod audio_codec;
+pub mod audio_input_control;
+pub mod headphone_jack;
+pub mod microphone;
+pub mod noise_cancellation;
+pub mod speaker;
+pub use audio_codec::AudioCodec;
+pub use microphone::Microphone;
+pub use speaker::Speaker;
