@@ -95,6 +95,80 @@ Each loop:
 
 ### Internal message flow
 
-Component ↓ PrimaryChannel ↓ PrimaryLoop ↓ TLS Server ↓ Token validation + decryption ↓ Secure dispatch
+Component ↓ PrimaryChannel ↓ PrimaryLoop ↓ TLS Server ↓ Token
+
+No message is processed unless:
+- the token is valid
+- the session is active
+- the sandbox is synchronized
+- cryptographic checks succeed
+
+---
+
+## 🔐 TLS Sandbox Isolation
+
+The TLS subsystem runs inside a **dedicated sandbox** with:
+
+- strict OS-level policies
+- resource limits
+- controlled activation
+
+This prevents:
+- privilege escalation
+- memory abuse
+- unauthorized component access
+
+TLS sandbox state is synchronized across loops to maintain a consistent security boundary.
+
+---
+
+## 🌐 TLS Server & Client
+
+### TLS Server
+
+The TLS server:
+- receives encrypted payloads
+- validates component tokens
+- enforces session rules
+- can be locked/unlocked
+- supports live certificate and key reloading
+
+It is tightly coupled to the `PrimaryLoop`.
+
+### TLS Client
+
+The TLS client:
+- transmits encrypted external tokens
+- communicates only through secure channels
+- respects server lock state
+- never bypasses session validation
+
+---
+
+## 🛡 Security Mechanisms
+
+The TLS module integrates multiple defensive layers:
+
+- end-to-end encryption
+- strict token validation
+- session expiration
+- honeypot-based anomaly detection
+- heartbeat-based health checks
+- mandatory sandbox isolation
+
+This design intentionally favors **security over convenience**.
+
+---
+
+## ⚠️ Notes & Scope
+
+This TLS implementation is designed for a **secure experimental operating system**.  
+It is not intended to replace general-purpose TLS libraries in userland environments.
+
+Any modification must preserve:
+- cryptographic correctness
+- loop separation
+- sandbox enforcement
+- token validation rules validation + decryption ↓ Secure dispatch
 
 ### External communication flow
