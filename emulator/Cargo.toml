@@ -1,0 +1,74 @@
+[package]
+name = ""  # À remplir
+version = "0.1.0"
+edition = "2021"
+description = "Description du projet"
+default-run = ""  # À remplir si nécessaire
+autobins = false
+
+[package.metadata]
+rust-toolchain = "nightly"
+
+[lib]
+name = ""  # À remplir
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+volatile = "0.5"
+atomic = "0.1"
+cortex-m = { version = "0.7", optional = true }
+cortex-m-rt = { version = "0.7", optional = true }
+rtic = { version = "2.0", optional = true }
+p256 = { version = "0.13", default-features = false, features = ["alloc", "ecdsa"] }
+signature = { version = "2.2", default-features = false }
+spin = { version = "0.7", default-features = false }
+crossbeam-queue = { version = "0.3.12", default-features = false, features = ["alloc"] }
+linked_list_allocator = { version = "0.10", default-features = false, features = ["use_spin"] }
+sha2 = { version = "0.10", default-features = false }
+
+[target.'cfg(not(target_os = "none"))'.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+
+[features]
+default = ["cortex-m"]
+rtic-support = ["rtic"]
+full = []  # À personnaliser avec les features nécessaires
+
+[dev-dependencies]
+lazy_static = "1.4"
+libc = "0.2"
+
+[build-dependencies]
+hmac = "0.12"
+sha2 = "0.10"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+rcgen = "0.9"
+rand = "0.8"
+
+[[bin]]
+name = ""  # À remplir
+path = "src/main.rs"
+
+[[test]]
+name = ""  # À remplir
+path = ""  # À remplir
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 1
+debug = true
+panic = "abort"
+
+[profile.test]
+opt-level = 1
+debug = true
+panic = "abort"
