@@ -1,0 +1,218 @@
+dumps_avances:
+  activities:
+    content_base64: |
+
+
+  audio:
+    content_base64: |
+ 
+
+  audio_flinger:
+    content_base64: |
+ 
+
+  battery:
+    content_base64: |
+ 
+
+  batterystats:
+    content_base64: |
+ 
+
+  bluetooth:
+    content_base64: |
+ 
+
+  buildprop:
+    content_base64: |
+      # Ce dump est vide.
+
+  camera:
+    content_base64: |
+ 
+
+  codec:
+    content_base64: |
+      # Ce dump est vide.
+
+  connectivity:
+    content_base64: |
+ 
+
+  connectivity_full:
+    content_base64: |
+ 
+
+  cpuinfo:
+    content_base64: |
+ 
+
+  device_policy:
+    content_base64: |
+ 
+
+  deviceidle:
+    content_base64: |
+ 
+
+  deviceidle_full:
+    content_base64: |
+ 
+
+  df:
+    content_base64: |
+ 
+
+  display:
+    content_base64: |
+ 
+
+  display_full:
+    content_base64: |
+ 
+
+  dumpsys_package:
+    content_base64: |
+
+
+  faceid:
+    content_base64: |
+
+
+  fingerprint:
+    content_base64: |
+
+
+  getprop:
+    content_base64: |
+
+
+  gfxinfo:
+    content_base64: |
+
+
+  gfxinfo_full:
+    content_base64: |
+
+
+  keystore:
+    content_base64: |
+      # Ce dump est vide.
+
+  logcat:
+    content_base64: |
+
+
+  media_player:
+    content_base64: |
+
+
+  meminfo:
+    content_base64: |
+
+
+  mount:
+    content_base64: |
+
+
+  nfc:
+    content_base64: |
+
+
+  overlays:
+    content_base64: |
+
+
+  packages:
+    content_base64: |
+
+
+  packages_full:
+    content_base64: |
+
+
+  power:
+    content_base64: |
+
+  ps:
+    content_base64: |
+
+
+  ps_full:
+    content_base64: |
+
+
+  seccomp:
+    content_base64: |
+      # Ce dump est vide.
+
+  selinux:
+    content_base64: |
+
+
+  selinux_mode:
+    content_base64: |
+
+
+  sensors:
+    content_base64: |
+
+
+  sensorservice:
+    content_base64: |
+
+
+  service_list:
+    content_base64: |
+
+
+  services:
+    content_base64: |
+
+
+  settings_global:
+    content_base64: |
+
+
+  settings_secure:
+    content_base64: |
+
+
+  settings_system:
+    content_base64: |
+
+
+  surfaceflinger:
+    content_base64: |
+
+
+  surfaceflinger_full:
+    content_base64: |
+
+
+  systrace:
+    content_base64: |
+
+
+  telephony:
+    content_base64: |
+
+
+  telephony_registry:
+    content_base64: |
+
+
+  thermal:
+    content_base64: |
+
+
+  thermalservice:
+    content_base64: |
+
+
+  trust:
+    content_base64: |
+
+
+  wifi:
+    content_base64: |

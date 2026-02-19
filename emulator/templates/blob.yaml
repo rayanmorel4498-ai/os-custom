@@ -1,0 +1,25 @@
+blobs:
+  calibration:
+    simulate:
+    description:
+    data:
+      magic:
+      version:
+      pd01_offset:
+      pd01_signature:
+      pd02_signature:
+      raw_bytes:
+      gain:
+      offset:
+      temp_coeff:
+    size:
+  firmware:
+    file:
+    version:
+    description:
+  nvram:
+    file:
+    description:
+  trace:
+    file:
+    description:
